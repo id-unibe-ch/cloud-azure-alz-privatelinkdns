@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/id-unibe-ch/cloud-azure-alz-privatelinkdns/refs/heads/main/data/schema_dns_zone.json",
+  "title": "DNS",
+  "description": "A privatelink dns zone within UniBE tenant.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "The name of the privatelink dns zone. When empty will be enumerated from the file name.",
+      "type": "string"
+    },
+    "records": {
+      "description": "Records within the dns zone.",
+      "type": "object",
+      "properties": {
+        "a": {
+          "description": "A-Records within the dns zone. The key of the object will be the name of the record.",
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^[A-Za-z0-9._-]+$": {
+              "type": "object",
+              "properties": {
+                "records": {
+                  "description": "The list of the targeted records",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array",
+                  "examples": [
+                    [
+                      "10.0.0.1"
+                    ],
+                    [
+                      "192.168.1.1",
+                      "10.0.100.1"
+                    ]
+                  ]
+                },
+                "ttl": {
+                  "description": "Specify ttl value for record in seconds. If omitted takes 3600.",
+                  "type": "number",
+                  "examples": [
+                    300,
+                    3600
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "records"
+              ]
+            }
+          }
+        },
+        "cname": {
+          "description": "CNAME-Records within the dns zone. The key of the object will be the name of the record.",
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^\\*{0,1}[A-Za-z0-9._-]+$": {
+              "type": "object",
+              "properties": {
+                "record": {
+                  "description": "The target record name which this CNAME points to",
+                  "type": "string",
+                  "examples": [
+                    "https://www.google.com"
+                  ]
+                },
+                "ttl": {
+                  "description": "Specify ttl value for record in seconds. If omitted takes 3600.",
+                  "type": "number",
+                  "examples": [
+                    300,
+                    3600
+                  ]
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "record"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

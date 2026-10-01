@@ -1,0 +1,28 @@
+records:
+  a:
+    "gentledune-36204945":
+      records:
+        - 10.32.8.36
+    "mangorock-72ad591e":
+      records:
+        - 10.32.8.213
+    "nicemushroom-b758c6ed":
+      records:
+        - 10.32.8.228
+    "whitebush-adff2983":
+      records:
+        - 10.32.6.14
+  cname:
+    "*.gentledune-36204945":
+      record: "gentledune-36204945.${zone_name}"
+
+    "*.mangorock-72ad591e":
+      record: "mangorock-72ad591e.${zone_name}"
+
+    "*.nicemushroom-b758c6ed":
+      record: "nicemushroom-b758c6ed.${zone_name}"
+
+    "*.whitebush-adff2983":
+      record: "whitebush-adff2983.${zone_name}"
+
+

@@ -6,4 +6,7 @@
   ...
 }:
 {
+  packages = [
+    pkgs.vscode-json-languageserver
+  ];
 }

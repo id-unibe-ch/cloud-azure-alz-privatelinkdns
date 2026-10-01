@@ -20,7 +20,9 @@ No providers.
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+| ---- | ------ | ------- |
+| <a name="module_private_dns_record"></a> [private\_dns\_record](#module\_private\_dns\_record) | ./modules/private_dns_records | n/a |
 
 ## Resources
 
@@ -28,9 +30,14 @@ No resources.
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+| ---- | ----------- | ---- | ------- | :------: |
+| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group containing the private dns zone. | `string` | n/a | yes |
+| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | Subscription id in which the resources are located. | `string` | n/a | yes |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+| ---- | ----------- |
+| <a name="output_zones"></a> [zones](#output\_zones) | n/a |
 <!-- END_TF_DOCS -->
