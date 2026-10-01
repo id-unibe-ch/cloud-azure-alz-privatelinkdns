@@ -1,0 +1,20 @@
+---
+name: 01 Azure Landing Zones Continuous Integration
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate_and_plan:
+    uses: id-unibe-ch/cloud-azure-alz-templates/.github/workflows/ci-template.yaml@main
+    name: "CI"
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+    with:
+      root_module_folder_relative_path: "."
+      devenv_enable: true
+    secrets: inherit
