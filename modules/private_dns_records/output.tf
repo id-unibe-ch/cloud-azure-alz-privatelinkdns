@@ -1,7 +1,7 @@
 output "a_records" {
-  value = azurerm_private_dns_a_record.this
+  value = module.a_records
 }
 
 output "cname_records" {
-  value = azurerm_private_dns_cname_record.this
+  value = module.cname_records
 }

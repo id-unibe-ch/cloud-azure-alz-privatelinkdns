@@ -5,83 +5,85 @@
   "description": "A privatelink dns zone within UniBE tenant.",
   "type": "object",
   "properties": {
-    "name": {
+    "domain_name": {
       "description": "The name of the privatelink dns zone. When empty will be enumerated from the file name.",
       "type": "string"
     },
-    "records": {
-      "description": "Records within the dns zone.",
+    "a_records": {
+      "description": "A-Records within the dns zone.",
       "type": "object",
-      "properties": {
-        "a": {
-          "description": "A-Records within the dns zone. The key of the object will be the name of the record.",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[A-Za-z0-9._-]+$": {
           "type": "object",
-          "additionalProperties": false,
-          "patternProperties": {
-            "^[A-Za-z0-9._-]+$": {
-              "type": "object",
-              "properties": {
-                "records": {
-                  "description": "The list of the targeted records",
-                  "items": {
-                    "type": "string"
-                  },
-                  "type": "array",
-                  "examples": [
-                    [
-                      "10.0.0.1"
-                    ],
-                    [
-                      "192.168.1.1",
-                      "10.0.100.1"
-                    ]
-                  ]
-                },
-                "ttl": {
-                  "description": "Specify ttl value for record in seconds. If omitted takes 3600.",
-                  "type": "number",
-                  "examples": [
-                    300,
-                    3600
-                  ]
-                }
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the record. If not set the map key will be used as `name`."
+            },
+            "ip_addresses": {
+              "description": "The list of the targeted records",
+              "items": {
+                "type": "string"
               },
-              "additionalProperties": false,
-              "required": [
-                "records"
+              "type": "array",
+              "examples": [
+                [
+                  "10.0.0.1"
+                ],
+                [
+                  "192.168.1.1",
+                  "10.0.100.1"
+                ]
+              ]
+            },
+            "ttl": {
+              "description": "Specify ttl value for record in seconds. If omitted takes 3600.",
+              "type": "number",
+              "examples": [
+                300,
+                3600
               ]
             }
-          }
-        },
-        "cname": {
-          "description": "CNAME-Records within the dns zone. The key of the object will be the name of the record.",
-          "type": "object",
+          },
           "additionalProperties": false,
-          "patternProperties": {
-            "^\\*{0,1}[A-Za-z0-9._-]+$": {
-              "type": "object",
-              "properties": {
-                "record": {
-                  "description": "The target record name which this CNAME points to",
-                  "type": "string",
-                  "examples": [
-                    "https://www.google.com"
-                  ]
-                },
-                "ttl": {
-                  "description": "Specify ttl value for record in seconds. If omitted takes 3600.",
-                  "type": "number",
-                  "examples": [
-                    300,
-                    3600
-                  ]
-                }
+          "required": [
+            "ip_addresses"
+          ]
+        }
+      },
+      "cname_records": {
+        "description": "CNAME-Records within the dns zone.",
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^\\*{0,1}[A-Za-z0-9._-]+$": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Name of the record. If not set the map key will be used as `name`."
               },
-              "additionalProperties": false,
-              "required": [
-                "record"
-              ]
-            }
+              "cname": {
+                "description": "The target record name which this CNAME points to",
+                "type": "string",
+                "examples": [
+                  "https://www.google.com"
+                ]
+              },
+              "ttl": {
+                "description": "Specify ttl value for record in seconds. If omitted takes 3600.",
+                "type": "number",
+                "examples": [
+                  300,
+                  3600
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "cname"
+            ]
           }
         }
       }
