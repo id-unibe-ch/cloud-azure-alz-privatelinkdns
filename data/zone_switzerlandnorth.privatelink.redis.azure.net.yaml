@@ -1,6 +1,5 @@
-records:
-  a:
-    amr-unibe-mobile-prod-chn:
-      records:
-        - 10.32.8.214
+a_records:
+  amr-unibe-mobile-prod-chn:
+    ip_addresses:
+      - 10.32.8.214
 

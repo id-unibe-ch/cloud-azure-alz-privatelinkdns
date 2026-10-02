@@ -6,5 +6,5 @@ locals {
     f => yamldecode(file("${local.zone_data_dir}/${f}"))
   }
 
-  zone_data = { for k, v in local.zone_data_map : try(v.name, trimprefix(trimsuffix(k, ".yaml"), "zone_")) => v }
+  zone_data = { for k, v in local.zone_data_map : try(v.domain_name, trimprefix(trimsuffix(k, ".yaml"), "zone_")) => v }
 }

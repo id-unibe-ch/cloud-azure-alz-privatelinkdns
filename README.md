@@ -37,7 +37,5 @@ No resources.
 
 ## Outputs
 
-| Name | Description |
-| ---- | ----------- |
-| <a name="output_zones"></a> [zones](#output\_zones) | n/a |
+No outputs.
 <!-- END_TF_DOCS -->

@@ -14,22 +14,24 @@
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+| ---- | ------ | ------- |
+| <a name="module_a_records"></a> [a\_records](#module\_a\_records) | git::https://github.com/Azure/terraform-azurerm-avm-res-network-privatednszone.git//modules/private_dns_a_record | da8b7599c740d344de310ffa8cbe32c61322a809 |
+| <a name="module_cname_records"></a> [cname\_records](#module\_cname\_records) | git::https://github.com/Azure/terraform-azurerm-avm-res-network-privatednszone.git//modules/private_dns_cname_record | da8b7599c740d344de310ffa8cbe32c61322a809 |
 
 ## Resources
 
 | Name | Type |
 | ---- | ---- |
-| [azurerm_private_dns_a_record.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_a_record) | resource |
-| [azurerm_private_dns_cname_record.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_dns_cname_record) | resource |
 | [azurerm_private_dns_zone.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/private_dns_zone) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
-| <a name="input_name"></a> [name](#input\_name) | Name of the private dns zone. | `string` | n/a | yes |
-| <a name="input_records"></a> [records](#input\_records) | An object with records for the private dns zone.<br/><br/>The following attributes are supported:<br/><br/>  - a: A map of objects with settings for an a dns record. The key of the map is the name of the record.<br/>    - records: A list of string for the records entry.<br/>    - ttl: A number for the ttl (in seconds) for the entry<br/>  - cname: A map of objects with settings for a cname dns record. The key of the map is the name of the record.<br/>    - record: A string for the record entry.<br/>    - ttl: A number for the ttl (in seconds) for the entry | <pre>object({<br/>    a = optional(map(object({<br/>      records = list(string)<br/>      ttl     = optional(number, 3600)<br/>    })), {})<br/>    cname = optional(map(object({<br/>      record = string<br/>      ttl    = optional(number, 3600)<br/>    })), {})<br/>  })</pre> | n/a | yes |
+| <a name="input_a_records"></a> [a\_records](#input\_a\_records) | A map of objects where each object contains information to create a A record. | <pre>map(object({<br/>    name         = optional(string)<br/>    ttl          = optional(number, 3600)<br/>    ip_addresses = set(string)<br/>  }))</pre> | `{}` | no |
+| <a name="input_cname_records"></a> [cname\_records](#input\_cname\_records) | A map of objects where each object contains information to create a CNAME record. | <pre>map(object({<br/>    name  = optional(string)<br/>    ttl   = optional(number, 3600)<br/>    cname = string<br/>  }))</pre> | `{}` | no |
+| <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | Name of the private dns zone. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group containing the private dns zone. | `string` | n/a | yes |
 
 ## Outputs
