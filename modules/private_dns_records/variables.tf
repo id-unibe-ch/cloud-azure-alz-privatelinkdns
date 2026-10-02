@@ -10,7 +10,7 @@ variable "resource_group_name" {
 variable "a_records" {
   type = map(object({
     name         = optional(string)
-    ttl          = optional(number, 3600)
+    ttl          = optional(number, 600)
     ip_addresses = set(string)
   }))
   default     = {}
@@ -20,7 +20,7 @@ variable "a_records" {
 variable "cname_records" {
   type = map(object({
     name  = optional(string)
-    ttl   = optional(number, 3600)
+    ttl   = optional(number, 600)
     cname = string
   }))
   default     = {}

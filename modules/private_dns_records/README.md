@@ -29,8 +29,8 @@
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
-| <a name="input_a_records"></a> [a\_records](#input\_a\_records) | A map of objects where each object contains information to create a A record. | <pre>map(object({<br/>    name         = optional(string)<br/>    ttl          = optional(number, 3600)<br/>    ip_addresses = set(string)<br/>  }))</pre> | `{}` | no |
-| <a name="input_cname_records"></a> [cname\_records](#input\_cname\_records) | A map of objects where each object contains information to create a CNAME record. | <pre>map(object({<br/>    name  = optional(string)<br/>    ttl   = optional(number, 3600)<br/>    cname = string<br/>  }))</pre> | `{}` | no |
+| <a name="input_a_records"></a> [a\_records](#input\_a\_records) | A map of objects where each object contains information to create a A record. | <pre>map(object({<br/>    name         = optional(string)<br/>    ttl          = optional(number, 600)<br/>    ip_addresses = set(string)<br/>  }))</pre> | `{}` | no |
+| <a name="input_cname_records"></a> [cname\_records](#input\_cname\_records) | A map of objects where each object contains information to create a CNAME record. | <pre>map(object({<br/>    name  = optional(string)<br/>    ttl   = optional(number, 600)<br/>    cname = string<br/>  }))</pre> | `{}` | no |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | Name of the private dns zone. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group containing the private dns zone. | `string` | n/a | yes |
 
