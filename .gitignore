@@ -10,5 +10,8 @@ devenv.local.yaml
 # direnv
 .direnv
 
-# pre-commit
+# symlinked configuration files
 .pre-commit-config.yaml
+.terraform-docs.yml
+.tflint.hcl
+trivy.yaml
